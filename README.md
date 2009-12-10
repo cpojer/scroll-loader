@@ -3,6 +3,8 @@ ScrollLoader - Copyright (c) 2009 [Christoph Pojer](http://cpojer.net/)
 
 Loads additional content on a website when a user reaches the end of the page.
 
+![Screenshot](http://cpojer.net/Forge/ScrollLoader.png)
+
 How to use
 ----------
 
