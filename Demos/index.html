@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ScrollLoader for MooTools</title>
+	<link rel="stylesheet" media="all" type="text/css" href="style.css" />
+	
+	<script type="text/javascript" src="mootools-core.js"></script>
+	<script type="text/javascript" src="mootools-class-extras.js"></script>
+	
+	<script type="text/javascript" src="../Source/ScrollLoader.js"></script>
+	
+	<script type="text/javascript">
+		window.addEvent('domready', function(){
+			// Some random text for testing
+			var counter = 0;
+			var text = ['Vestibulum bibendum est quis turpis mollis non feugiat ligula euismod. Donec mattis malesuada tempus. Nullam elementum orci eu justo laoreet sagittis nec at lectus. Duis a diam tempus sem vehicula mollis. Pellentesque libero nibh, adipiscing ac porttitor ac, ultricies vitae lacus. Suspendisse pretium, tellus eget fringilla aliquam, lectus dolor accumsan dui, quis rhoncus ligula leo nec dolor. Suspendisse sit amet enim enim, a posuere neque. Aliquam lacus felis, malesuada vel pretium id, dapibus quis lacus. Nam ac congue est. Maecenas id lacus in lectus facilisis vestibulum et nec dolor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.', 'Nulla vitae ipsum sapien, a ullamcorper lorem. Curabitur ut ligula quis mi bibendum accumsan. Maecenas malesuada, libero eu malesuada placerat, nulla mi porta metus, vitae ultricies dolor quam sed diam. Duis auctor consectetur aliquet. Curabitur eu justo sit amet mauris porttitor facilisis a et purus. Aenean faucibus ligula at mi porttitor tristique sed nec tortor. Mauris fermentum ante nec dolor fermentum cursus. Sed lacinia accumsan risus, a commodo urna viverra in. Proin vulputate purus dictum enim semper bibendum. Donec facilisis dui id est ullamcorper commodo. Sed vitae massa metus, eu vestibulum erat. Maecenas pretium, turpis non fermentum pharetra, urna velit lacinia eros, lacinia iaculis dolor sapien a diam. Sed dignissim posuere leo, ut cursus nunc ultricies ornare. Sed at elementum purus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec nibh velit, imperdiet a fermentum quis, mollis non sapien.', 'Phasellus eget tortor mi. Etiam ullamcorper lacinia diam eu auctor. Donec tempus eros a dui rhoncus non semper tortor varius. Curabitur sollicitudin elementum ullamcorper. Nulla id venenatis sem. Morbi posuere elit nec nunc venenatis posuere. Praesent leo neque, commodo eget luctus ut, facilisis ac mauris. Donec fermentum rutrum nisl vitae aliquet. Integer placerat, elit sit amet elementum elementum, massa nibh tempus nulla, ac sodales est purus non diam. Sed ultrices ultrices vehicula. Donec dignissim blandit tortor, a fermentum est adipiscing dignissim. Curabitur tincidunt convallis lacus at porta. Donec semper nunc a velit luctus pellentesque. Nulla justo mi, pretium dignissim elementum ultrices, porta eget lectus. In massa nunc, adipiscing vel malesuada eu, venenatis in sem. Vestibulum euismod ipsum ac velit sollicitudin id tempus mi vestibulum. Donec placerat facilisis libero nec condimentum. In convallis ornare nibh, rhoncus faucibus velit facilisis at. Mauris eu felis nec odio adipiscing commodo. Nam varius pharetra augue nec ultricies.'];
+			
+			new ScrollLoader({
+				onScroll: function(){
+					var scroll = this;
+					scroll.detach(); // We detach the listener so it does not execute while loading
+					
+					// Now here goes some Request, this is just a simple timer to give you an idea
+					(function(){
+						if (!text[counter]){
+							// No more content is available, don't attach the scroll handler again
+							
+							document.getElement('div').adopt(new Element('p', {text: 'No more content available!'}));
+							
+							return;
+						}
+						
+						document.getElement('div').adopt(new Element('p', {text: text[counter++]}));
+						
+						// Attach the listener again so the event fires when you hit the bottom again
+						scroll.attach();
+					}).delay(1000); // Simulated one second delay
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+<div>
+	<h1>Please scroll to the end of the page to load additional content</h1>
+	
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce luctus tortor non mauris porttitor id scelerisque nunc pellentesque. Duis orci ligula, commodo ut ultrices eu, pretium eget lacus. Vestibulum lorem quam, viverra non commodo eget, dapibus id ligula. Ut lobortis tempus facilisis. Proin tristique, mauris eget fringilla lacinia, libero est tincidunt neque, vitae mattis nisi lorem vel dolor. Praesent nec urna at metus lobortis scelerisque nec eu neque. Praesent sagittis orci id arcu auctor aliquam. Aenean vitae arcu vitae tellus malesuada suscipit. Fusce et mi lorem, nec scelerisque diam. Nullam tempus malesuada leo, ut bibendum felis rutrum non. Nulla sodales semper lorem, ut porttitor purus feugiat eu. Nullam tincidunt lacus et mi rutrum eu mollis dui malesuada. Aenean in justo tempor metus rhoncus ultrices ac eu est. Vestibulum quam elit, dictum at porttitor ullamcorper, hendrerit eget metus. Nam sagittis facilisis iaculis. Nam non elit ac ipsum convallis pretium.</p>
+
+	<p>Sed et tortor massa, a rhoncus libero. Fusce vestibulum nulla eget felis ultrices ut dignissim enim aliquet. Etiam et lorem orci. Sed eu diam a ipsum sagittis convallis ac rutrum ipsum. Suspendisse potenti. Morbi eu dictum est. Mauris et diam magna. Vivamus ac leo at risus placerat vulputate. Sed consectetur nunc at neque molestie gravida. Proin ut fringilla tellus. Etiam at justo rhoncus risus facilisis tincidunt ut sit amet velit. In faucibus, augue a aliquam faucibus, magna nulla imperdiet augue, ut iaculis tortor nibh ac diam. Ut at ornare lectus. Curabitur iaculis leo quis est pulvinar tincidunt.</p>
+
+<p>	Donec cursus, nisi nec rhoncus euismod, est est pretium nibh, non tincidunt nibh dolor in neque. Suspendisse ultricies, felis eu sollicitudin commodo, sem lectus faucibus neque, eget placerat tellus metus ac tellus. Vivamus vitae neque vitae tortor adipiscing vehicula non ac leo. Praesent ut faucibus mauris. Proin cursus dapibus sodales. Vivamus sit amet scelerisque lectus. Nam nisi nulla, vestibulum nec euismod et, viverra iaculis turpis. Proin scelerisque diam eu orci sollicitudin varius. Sed porttitor bibendum orci vitae eleifend. Proin malesuada, ligula eget ornare fringilla, enim mauris gravida diam, nec viverra sapien ipsum ut elit.</p>
+
+<p>	Suspendisse potenti. Nullam cursus congue purus, et rhoncus mi adipiscing eget. Integer tempus iaculis nibh, scelerisque tempor libero mattis sit amet. Morbi eleifend congue nunc in consectetur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam vel ipsum ut arcu sodales blandit. Proin vitae leo vel velit luctus lacinia a et nisl. Nam lobortis nisi nec lectus tristique mollis. Quisque libero leo, facilisis eu convallis nec, consectetur in tellus. Duis dui tellus, hendrerit in tincidunt vel, viverra vitae orci. Nam ipsum turpis, sagittis a convallis ut, convallis at nunc. Aenean gravida, leo quis tincidunt volutpat, lacus lectus consequat purus, sed tempus lacus est elementum urna.
+</p>
+<p>	Suspendisse eu ligula nisl. Vivamus vestibulum enim volutpat tellus mattis sed dignissim enim egestas. Nulla facilisi. Pellentesque nulla neque, sodales sit amet porttitor ut, feugiat nec metus. Aenean iaculis, nibh eu mattis mattis, purus tortor laoreet libero, at hendrerit risus lacus nec libero. Suspendisse faucibus, sem vel imperdiet feugiat, ligula nulla vehicula massa, commodo commodo sem nisi eu felis. Integer eu lacus quis enim rhoncus semper. Vivamus nec nisi diam, et ultricies leo. Duis bibendum, nunc quis gravida auctor, magna velit ornare tortor, at sollicitudin orci erat eu lorem. Pellentesque a lacus at turpis viverra feugiat. Phasellus libero lacus, ultricies ut suscipit non, aliquet a elit. Praesent id libero libero. Sed leo dolor, lobortis vel mattis mollis, hendrerit ut lacus.
+</p>
+<p>	Proin volutpat mauris vel leo dictum in blandit arcu condimentum. Curabitur lacinia scelerisque nisl sit amet ornare. Nunc diam urna, tempus in gravida sed, lobortis quis sapien. Nullam vitae urna leo. Proin in luctus leo. Duis eget risus nec risus commodo elementum. In id enim sit amet lacus consectetur posuere id id ipsum. Aenean sapien sapien, malesuada a imperdiet et, malesuada vel justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rhoncus neque nec dui gravida egestas. Curabitur egestas, leo id faucibus venenatis, purus arcu iaculis lacus, ac tincidunt lectus metus ut odio. Sed convallis, ipsum et dignissim consequat, nibh ipsum accumsan enim, adipiscing volutpat nibh erat luctus augue. Mauris ac lectus mi. Vestibulum vehicula odio eget nulla luctus bibendum at lobortis orci. Maecenas elementum leo sit amet justo sagittis posuere. Nam ultricies lectus varius mauris eleifend eu posuere diam imperdiet. Cras sagittis est eu turpis accumsan elementum. Sed bibendum vestibulum eleifend. Etiam mollis magna at risus tristique ullamcorper.</p>
+
+<p>	Nullam eu massa diam. Suspendisse eget vehicula dolor. Ut vitae sollicitudin nunc. Suspendisse a tincidunt diam. Donec eget dui in libero ullamcorper posuere. Maecenas ut nisi sed augue accumsan volutpat. Sed ullamcorper, nulla sit amet porta porttitor, nisi nulla faucibus libero, in rhoncus turpis lectus id quam. Suspendisse vel tortor nibh, nec imperdiet sapien. Pellentesque tristique laoreet ligula eget vulputate. Sed scelerisque congue mi, lobortis adipiscing est molestie eu. Nam congue lacus a enim varius blandit. Cras non nisi a justo faucibus scelerisque. Ut placerat accumsan tortor, nec dapibus leo feugiat sed. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla tincidunt arcu eu diam suscipit egestas.</p>
+
+<p>	Proin ac nisi sit amet lacus pharetra semper nec vitae ante. Quisque iaculis, tellus sed tincidunt pellentesque, orci tortor scelerisque ante, in pulvinar eros lorem luctus quam. Etiam ut lorem interdum libero placerat auctor. Praesent quam dui, tristique eu lacinia vel, fringilla ut metus. Vivamus diam nulla, congue ut scelerisque ac, facilisis ut erat. Aliquam erat volutpat. Donec ultricies gravida urna. Fusce congue neque id lectus vehicula blandit. Proin magna neque, ultrices tristique molestie in, tincidunt et eros. Aliquam sed orci arcu. Etiam convallis tellus nec erat egestas at condimentum nulla consectetur. Vestibulum tempor lacus a ante congue tincidunt sed in libero. Phasellus quis semper mauris. Proin gravida sapien tempor eros ultrices suscipit. Nunc consequat turpis ac augue facilisis egestas. Quisque rutrum mattis nisi, non mollis eros vulputate nec. Nulla pharetra purus ac sapien lacinia facilisis. Ut imperdiet turpis id nulla euismod vel ullamcorper felis commodo. Nulla quis odio in massa cursus pretium non eu elit.</p>
+
+<p>	Cras volutpat massa id elit congue vel placerat nibh imperdiet. Suspendisse placerat mi magna. Nullam sit amet odio nisl. Nunc dictum sollicitudin nisi, ut tincidunt ante molestie ut. Proin pellentesque magna non enim iaculis ac euismod lacus auctor. Phasellus sed nibh neque, non facilisis nisi. Donec id massa sed nibh elementum venenatis. Aenean vel turpis est, aliquam interdum enim. Morbi et neque leo. Praesent a risus in libero auctor condimentum. Aliquam ornare volutpat tortor id mollis. Sed a felis nec metus convallis tristique eu vitae mauris.</p>
+
+<p>	Aliquam ante nisl, lacinia eu vehicula vel, lacinia vel nunc. Curabitur egestas turpis quis magna auctor pretium. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam eros odio, auctor vulputate ultricies tristique, faucibus in ligula. Quisque ac lacus urna. Maecenas commodo, justo id rutrum mattis, elit ante fringilla nisl, sit amet dictum eros mauris sed sem. Donec elementum hendrerit porta. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum a tellus sapien. Donec tempus ante nec lacus scelerisque vitae mollis nibh eleifend. Sed lacinia, lectus vitae lobortis imperdiet, augue metus rutrum nulla, nec dapibus dui lacus vel neque. Nulla vulputate facilisis enim, ac adipiscing elit varius in. Fusce a leo quam, a pellentesque urna. Integer ut nisi ut urna ullamcorper faucibus feugiat a arcu. Suspendisse ut bibendum odio. Proin sollicitudin vehicula auctor. Nunc quis urna velit, nec sodales elit.</p>
+
+</div>
+</body>
+</html>
