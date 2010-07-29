@@ -1,29 +1,18 @@
 /*
 ---
-description: ScrollLoader
 
-authors:
-  - Christoph Pojer
+name: ScrollLoader
 
-requires:
-  core/1.2.4: '*'
+description: Fires an event when the user reaches a certain boundary.
 
-provides:
-  - scrollloader
+authors: Christoph Pojer (@cpojer)
 
-license:
-  MIT-style license
+license: MIT-style license.
 
-version:
-  1.0
+requires: [Core/Events, Core/Options, Core/Element.Event, Core/Element.Dimension, Class-Extras/Class.Binds]
 
-options:
-  - area: (number, defaults to *50*) The boundary from the bottom/right where the event is fired in
-  - mode: (string, defaults to *vertical*) Either vertical or horizontal for bottom or right
-  - container: (element, defaults to *null*) The used element or the window
+provides: ScrollLoader
 
-events:
-  - onScroll(): fires when the user reaches a certain boundary specified by the 'area' option
 ...
 */
 
@@ -31,10 +20,10 @@ events:
 
 this.ScrollLoader = new Class({
 	
-	Implements: [Options, Events],
+	Implements: [Options, Events, Class.Binds],
 	
 	options: {
-		/*onScroll: $empty,*/
+		/*onScroll: fn,*/
 		area: 50,
 		mode: 'vertical',
 		container: null
@@ -42,27 +31,29 @@ this.ScrollLoader = new Class({
 	
 	initialize: function(options){
 		this.setOptions(options);
-		this.bound = {scroll: this.scroll.bind(this)};
-		this.container = document.id(this.options.container) || window;
+		
+		this.element = document.id(this.options.container) || window;
 		this.attach();
 	},
 	
 	attach: function(){
-		this.container.addEvent('scroll', this.bound.scroll);
+		this.element.addEvent('scroll', this.bound('scroll'));
 		return this;
 	},
 	
 	detach: function(){
-		this.container.removeEvent('scroll', this.bound.scroll);
+		this.element.removeEvent('scroll', this.bound('scroll'));
 		return this;
 	},
 	
 	scroll: function(){
-		var z = this.options.mode == 'vertical' ? 'y' : 'x';
+		console.log('sup?');
+		var z = (this.options.mode == 'vertical') ? 'y' : 'x';
 		
-		var size = this.container.getSize()[z],
-			scroll = this.container.getScroll()[z],
-			scrollSize = this.container.getScrollSize()[z];
+		var element = this.element,
+			size = element.getSize()[z],
+			scroll = element.getScroll()[z],
+			scrollSize = element.getScrollSize()[z];
 		
 		if (scroll + size < scrollSize - this.options.area) return;
 		

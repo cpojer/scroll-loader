@@ -1,5 +1,17 @@
-name: ScrollLoader
-author: cpojer
-category: Utilities
-tags: [scroll, load, request]
-demo: http://cpojer.net/Scripts/ScrollLoader
+name: "ScrollLoader"
+
+exports: "scroll-loader.js"
+
+web: "[cpojer.net](http://cpojer.net)"
+
+description: "Fires an event when the user reaches a certain boundary."
+
+license: "[MIT License](http://mootools.net/license.txt)"
+
+copyright: "&copy; [Christoph Pojer](http://cpojer.net/)"
+
+author: "cpojer"
+authors: "[Christoph Pojer](http://cpojer.net)"
+
+sources:
+    - "Source/ScrollLoader.js"
