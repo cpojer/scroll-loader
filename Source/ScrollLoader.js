@@ -47,7 +47,6 @@ this.ScrollLoader = new Class({
 	},
 	
 	scroll: function(){
-		console.log('sup?');
 		var z = (this.options.mode == 'vertical') ? 'y' : 'x';
 		
 		var element = this.element,
