@@ -11,6 +11,10 @@ Build via [Packager](http://github.com/kamicane/packager), requires [MooTools Co
 	./packager register /path/to/scroll-loader
 	./packager build ScrollLoader/* > scroll-loader.js
 
+To build this plugin without external dependencies use
+
+	./packager build ScrollLoader/* +use-only ScrollLoader > scroll-loader.js
+
 How to use
 ----------
 
