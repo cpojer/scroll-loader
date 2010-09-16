@@ -56,7 +56,7 @@ this.ScrollLoader = new Class({
 		
 		if (scroll + size < scrollSize - this.options.area) return;
 		
-		this.triggerEvent('scroll');
+		this.fireEvent('scroll');
 	}
 	
 });
