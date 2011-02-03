@@ -3,13 +3,13 @@
 
 name: ScrollLoader
 
-description: Fires an event when the user reaches a certain boundary.
+description: Provides the ability to load more content when a user reaches the end of a page.
 
 authors: Christoph Pojer (@cpojer)
 
 license: MIT-style license.
 
-requires: [Core/Events, Core/Options, Core/Element.Event, Core/Element.Dimension, Class-Extras/Class.Binds]
+requires: [Core/Events, Core/Options, Core/Element.Event, Core/Element.Dimensions, Class-Extras/Class.Binds]
 
 provides: ScrollLoader
 
