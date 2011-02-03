@@ -3,17 +3,22 @@ ScrollLoader - Copyright (c) 2010 [Christoph Pojer](http://cpojer.net/)
 
 Fires an event when the user reaches a certain boundary.
 
+This Plugin is part of MooTools [PowerTools!](http://cpojer.net/PowerTools).
+
+* [Build PowerTools!](http://cpojer.net/PowerTools)
+* [Fork PowerTools!](https://github.com/cpojer/PowerTools)
+
 Build
 -----
 
 Build via [Packager](http://github.com/kamicane/packager), requires [MooTools Core](http://github.com/mootools/mootools-core) and [MooTools Class-Extras](http://github.com/cpojer/mootools-class-extras) to be registered to Packager already
 
-	./packager register /path/to/scroll-loader
-	./packager build ScrollLoader/* > scroll-loader.js
+	packager register /path/to/scroll-loader
+	packager build ScrollLoader/* > scroll-loader.js
 
 To build this plugin without external dependencies use
 
-	./packager build ScrollLoader/* +use-only ScrollLoader > scroll-loader.js
+	packager build ScrollLoader/* +use-only ScrollLoader > scroll-loader.js
 
 How to use
 ----------
