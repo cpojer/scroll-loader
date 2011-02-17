@@ -61,4 +61,4 @@ this.ScrollLoader = new Class({
 	
 });
 
-})();
+}).call(this);
