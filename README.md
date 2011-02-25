@@ -3,6 +3,8 @@ ScrollLoader - Copyright (c) 2010 [Christoph Pojer](http://cpojer.net/)
 
 Fires an event when the user reaches a certain boundary.
 
+![Screenshot](http://cpojer.net/Logo/scroll-loader.png)
+
 This Plugin is part of MooTools [PowerTools!](http://cpojer.net/PowerTools).
 
 * [Build PowerTools!](http://cpojer.net/PowerTools)
