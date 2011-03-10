@@ -41,4 +41,6 @@ ol {list-style-type:decimal;}
 
 body > div {
 	margin: 10px;
+	max-height: 600px;
+	overflow: auto;
 }
