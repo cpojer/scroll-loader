@@ -13,7 +13,7 @@ This Plugin is part of MooTools [PowerTools!](http://cpojer.net/PowerTools).
 Build
 -----
 
-Build via [Packager](http://github.com/kamicane/packager), requires [MooTools Core](http://github.com/mootools/mootools-core) and [MooTools Class-Extras](http://github.com/cpojer/mootools-class-extras) to be registered to Packager already
+Build via [Packager](http://github.com/kamicane/packager), requires [MooTools Core](http://github.com/mootools/mootools-core) to be registered to Packager already
 
 	packager register /path/to/scroll-loader
 	packager build ScrollLoader/* > scroll-loader.js
