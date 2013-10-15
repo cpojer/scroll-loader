@@ -31,18 +31,18 @@ this.ScrollLoader = new Class({
 	
 	initialize: function(options){
 		this.setOptions(options);
-		
 		this.element = document.id(this.options.container) || window;
+		this.bound = this.scroll.bind(this);
 		this.attach();
 	},
 	
 	attach: function(){
-		this.element.addEvent('scroll', this.scroll.bind(this));
+		this.element.addEvent('scroll', this.bound);
 		return this;
 	},
 	
 	detach: function(){
-		this.element.removeEvent('scroll', this.scroll.bind(this));
+		this.element.removeEvent('scroll', this.bound);
 		return this;
 	},
 	
