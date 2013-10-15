@@ -9,7 +9,7 @@ authors: Christoph Pojer (@cpojer)
 
 license: MIT-style license.
 
-requires: [Core/Events, Core/Options, Core/Element.Event, Core/Element.Dimensions, Class-Extras/Class.Binds]
+requires: [Core/Events, Core/Options, Core/Element.Event, Core/Element.Dimensions]
 
 provides: ScrollLoader
 
@@ -20,7 +20,7 @@ provides: ScrollLoader
 
 this.ScrollLoader = new Class({
 	
-	Implements: [Options, Events, Class.Binds],
+	Implements: [Options, Events],
 	
 	options: {
 		/*onScroll: fn,*/
@@ -37,12 +37,12 @@ this.ScrollLoader = new Class({
 	},
 	
 	attach: function(){
-		this.element.addEvent('scroll', this.bound('scroll'));
+		this.element.addEvent('scroll', this.scroll.bind(this));
 		return this;
 	},
 	
 	detach: function(){
-		this.element.removeEvent('scroll', this.bound('scroll'));
+		this.element.removeEvent('scroll', this.scroll.bind(this));
 		return this;
 	},
 	
